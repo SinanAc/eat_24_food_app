@@ -34,8 +34,8 @@ migrate_working_dir/
 
 # Web related
 lib/generated_plugin_registrant.dart
-lib/onboarding
-lib/sign
+lib/screens/onboarding
+lib/screens/sign
 
 # Symbolication related
 app.*.symbols
