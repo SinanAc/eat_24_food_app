@@ -6,7 +6,7 @@ import 'package:eat24/view/screens/sign/widgets/or_widget.dart';
 import 'package:eat24/view/screens/sign/widgets/signup_with_google.dart';
 import 'package:eat24/view/screens/sign/widgets/text_button.dart';
 import 'package:eat24/view/widgets/button_widget.dart';
-import 'package:eat24/view/widgets/mini_title.dart';
+import 'package:eat24/view/widgets/single_color_title.dart';
 import 'package:eat24/view/widgets/text_field_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -23,15 +23,14 @@ class SignInScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
-                const MiniTitle(
+                SizedBox(height: MediaQuery.of(context).size.height/7.0),
+                const SingleColorTitle(
                   text: 'Sign in to',
                   color: KColors.kWhiteColor,
                 ),
                 KSizedBox.kHeigh_5,
-                const MiniTitle(
+                const SingleColorTitle(
                   text: 'Eat 24',
                   color: KColors.kThemeYellow,
                 ),
@@ -43,13 +42,13 @@ class SignInScreen extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        left: 15, right: 15, top: 30, bottom: 20),
+                        left: 15, right: 15, top: 30, bottom: 25),
                     child: Column(
                       children: [
                         const TextFieldWidget(hintText: 'Email ID'),
                         KSizedBox.kHeigh_20,
                         const TextFieldWidget(hintText: 'Password'),
-                        KSizedBox.kHeigh_20,
+                        KSizedBox.kHeigh_30,
                         ButtonWidget(
                           text: 'Sign in',
                           onTap: () {},

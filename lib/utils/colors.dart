@@ -9,4 +9,5 @@ class KColors {
   static const Color kTextFieldColor = Color.fromARGB(255, 229, 229, 229);
   static const Color kWhiteColor = Colors.white;
   static const Color kGreyColor = Color.fromARGB(255, 200, 197, 197);
+  static const Color kThemeBackground = Color(0xffE8E8E8);
 }

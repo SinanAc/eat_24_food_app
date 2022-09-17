@@ -28,10 +28,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   bordered_text: 2.0.0
+  bottom_navy_bar: 6.0.0
   cupertino_icons: 1.0.2
   flutter:
     sdk: flutter
-  flutter_svg: ^1.1.5
+  flutter_svg: 1.1.5
+  provider: 6.0.3
+  smooth_page_indicator: 1.0.0+2
 
 dev_dependencies:
   flutter_lints: 2.0.0

@@ -22,6 +22,7 @@ class OnboardingPage extends StatelessWidget {
   final PageController controller;
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: KColors.kThemeOnboarding,
       body: SafeArea(
@@ -42,7 +43,7 @@ class OnboardingPage extends StatelessWidget {
               KSizedBox.kHeigh_30,
               SizedBox(
                 height: 80,
-                width: MediaQuery.of(context).size.width / 1.2,
+                width: size.width / 1.2,
                 child: Text(
                   text,
                   style: const TextStyle(
@@ -52,14 +53,14 @@ class OnboardingPage extends StatelessWidget {
                       fontWeight: FontWeight.w600),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height / 10.0),
+              SizedBox(height: size.height / 10.0),
               Center(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 2.7,
+                  height: size.height / 2.7,
                   child: Image.asset(img),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height / 7.0),
+              SizedBox(height: size.height / 7.0),
               Center(
                 child: ElevatedButton(
                   onPressed: () {
@@ -75,8 +76,7 @@ class OnboardingPage extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(
                       vertical: 13,
                     ),
-                    //  elevation: 40,
-                    minimumSize: Size(MediaQuery.of(context).size.width / 4.0,40),
+                    minimumSize: Size(size.width / 4.0,40),
                   ),
                   child: const Icon(
                     Icons.arrow_forward,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 class KSizedBox {
+  // height sizes
   static const kHeigh_5 = SizedBox(height: 5);
   static const kHeigh_10 = SizedBox(height: 10);
   static const kHeigh_15 = SizedBox(height: 15);
@@ -9,4 +10,7 @@ class KSizedBox {
   static const kHeigh_30 = SizedBox(height: 30);
   static const kHeigh_40 = SizedBox(height: 40);
   static const kHeigh_50 = SizedBox(height: 50);
+  // width sizes
+  static const kWidth_5 = SizedBox(width: 5);
+  static const kWidth_10 = SizedBox(width: 10);
 }

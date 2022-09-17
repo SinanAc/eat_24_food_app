@@ -1,4 +1,5 @@
 import 'package:eat24/utils/colors.dart';
+import 'package:eat24/utils/push_functions.dart';
 import 'package:eat24/utils/sizes.dart';
 import 'package:eat24/utils/strings.dart';
 import 'package:eat24/view/screens/sign/sign_in/sign_in_screen.dart';
@@ -9,6 +10,7 @@ class GetStartedScreen extends StatelessWidget {
   const GetStartedScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: KColors.kThemeGreen,
       body: SafeArea(
@@ -38,7 +40,7 @@ class GetStartedScreen extends StatelessWidget {
               KSizedBox.kHeigh_10,
               SizedBox(
                 height: 80,
-                width: MediaQuery.of(context).size.width / 1.2,
+                width: size.width / 1.2,
                 child: const Text(
                   Strings.getStartString,
                   style: TextStyle(
@@ -50,17 +52,16 @@ class GetStartedScreen extends StatelessWidget {
               ),
               KSizedBox.kHeigh_5,
               ButtonWidget(
-                  text: 'Get Started',
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (ctx) => const SignInScreen()));
-                  },
-                  width:MediaQuery.of(context).size.width / 2.3,
-                  ),
-              SizedBox(height: MediaQuery.of(context).size.height / 5.0),
+                text: 'Get Started',
+                onTap: () {
+                  PushFunctions.push(context, const SignInScreen());
+                },
+                width: size.width / 2.3,
+              ),
+              SizedBox(height: size.height / 5.0),
               Center(
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height / 4.5,
+                  height: size.height / 4.5,
                   child: Image.asset(Strings.getStartImg),
                 ),
               ),

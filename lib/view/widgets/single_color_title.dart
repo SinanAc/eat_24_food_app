@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MiniTitle extends StatelessWidget {
+class SingleColorTitle extends StatelessWidget {
   final String text;
   final Color color;
-  const MiniTitle({
+  const SingleColorTitle({
     Key? key,
     required this.text,
     required this.color,
