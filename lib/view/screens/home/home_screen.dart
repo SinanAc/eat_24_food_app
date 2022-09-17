@@ -22,11 +22,12 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(13),
-            child: ListView(
-              children: [
-                Row(
+          child: Column(
+            children: [
+              KSizedBox.kHeigh_15,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 13),
+                child: Row(
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(left: 4.0),
@@ -41,8 +42,11 @@ class HomeScreen extends StatelessWidget {
                     Image.asset('assets/images/Group 1.png'),
                   ],
                 ),
-                KSizedBox.kHeigh_5,
-                Row(
+              ),
+              KSizedBox.kHeigh_5,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 13),
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: const [
                     Icon(
@@ -59,31 +63,35 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                KSizedBox.kHeigh_20,
-                SearchField(size: size),
-                KSizedBox.kHeigh_20,
-                SizedBox(
-                    height: 180,
-                    child: PageView(
-                      controller: controller,
-                      children: const [
-                        MainCard(color: Colors.green),
-                        MainCard(color: Colors.yellow),
-                        MainCard(color: Colors.orange),
-                      ],
-                    )),
-                SmoothPageIndicator(
+              ),
+              KSizedBox.kHeigh_20,
+              SearchField(size: size),
+              KSizedBox.kHeigh_20,
+              SizedBox(
+                  height: size.height * 0.3,
+                  width: double.infinity,
+                  child: PageView(
+                    controller: controller,
+                    children: const [
+                      MainCard(color: Colors.white),
+                      MainCard(color: Colors.yellow),
+                      MainCard(color: Colors.orange),
+                    ],
+                  )),
+              KSizedBox.kHeigh_10,
+              Center(
+                child: SmoothPageIndicator(
                   controller: controller,
                   count: 3,
                   effect: const ExpandingDotsEffect(
                     activeDotColor: KColors.kThemeGreen,
-                    dotColor: Colors.grey,
-                    dotHeight: 15,
-                    dotWidth: 15,
+                    dotColor: Color.fromARGB(77, 15, 102, 87),
+                    dotHeight: 8,
+                    dotWidth: 8,
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ],

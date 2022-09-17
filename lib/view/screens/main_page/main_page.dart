@@ -1,5 +1,4 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:eat24/utils/colors.dart';
 import 'package:eat24/view_model/main_page_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +10,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final mainPageProvider = Provider.of<MainPageViewModel>(context);
     return Scaffold(
-      backgroundColor: KColors.kThemeBackground,
+      backgroundColor: const Color.fromARGB(240, 232, 232, 232),
       body: MainPageViewModel.screenList[mainPageProvider.bottomNavIndex],
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: mainPageProvider.bottomNavIndex,
