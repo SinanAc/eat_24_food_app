@@ -22,10 +22,10 @@ class GetStartedScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  slideBar(context, KColors.kSliderColor),
-                  slideBar(context, KColors.kSliderColor),
-                  slideBar(context, KColors.kSliderColor),
-                  slideBar(context, KColors.kSliderColor),
+                  slideBar(context),
+                  slideBar(context),
+                  slideBar(context),
+                  slideBar(context),
                 ],
               ),
               KSizedBox.kHeigh_30,
@@ -72,12 +72,14 @@ class GetStartedScreen extends StatelessWidget {
     );
   }
 
-  Container slideBar(BuildContext context, Color color) {
+  Container slideBar(BuildContext context) {
     return Container(
       height: 4,
       width: MediaQuery.of(context).size.width / 4.7,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(10), color: color),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: KColors.kSliderColor,
+      ),
     );
   }
 }

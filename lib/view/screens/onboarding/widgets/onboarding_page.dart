@@ -1,22 +1,15 @@
 import 'package:eat24/utils/colors.dart';
 import 'package:eat24/utils/sizes.dart';
+import 'package:eat24/view/widgets/page_indicator.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({
     Key? key,
-    required this.color1,
-    required this.color2,
-    required this.color3,
-    required this.color4,
     required this.text,
     required this.img,
     required this.controller,
   }) : super(key: key);
-  final Color color1;
-  final Color color2;
-  final Color color3;
-  final Color color4;
   final String text;
   final String img;
   final PageController controller;
@@ -29,60 +22,60 @@ class OnboardingPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 18),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  slideBar(context, color1),
-                  slideBar(context, color2),
-                  slideBar(context, color3),
-                  slideBar(context, color4),
-                ],
-              ),
-              KSizedBox.kHeigh_30,
+              KSizedBox.kHeigh_40,
               SizedBox(
-                height: 80,
-                width: size.width / 1.2,
+                height: size.height/8,
                 child: Text(
                   text,
                   style: const TextStyle(
-                      fontFamily: 'MainFont',
-                      color: Colors.black,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600),
+                    fontFamily: 'MainFont',
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(height: size.height / 10.0),
+              SizedBox(height: size.height / 12.0),
               Center(
                 child: SizedBox(
-                  height: size.height / 2.7,
+                  height: size.height / 2.6,
                   child: Image.asset(img),
                 ),
               ),
               SizedBox(height: size.height / 7.0),
-              Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    controller.nextPage(
-                        duration: const Duration(microseconds: 100),
-                        curve: Curves.ease);
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: KColors.kThemeGreen,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(100),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      controller.jumpToPage(4);
+                        },
+                    child: const Text(
+                      '>> Skip',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: KColors.kThemeGreen,
+                        ),
                     ),
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 13,
+                  ),
+                  PageIndicatorWidget(controller: controller),
+                  TextButton(
+                    onPressed: () {
+                      controller.nextPage(
+                          duration: const Duration(microseconds: 100),
+                          curve: Curves.ease);
+                    },
+                    child: const Text(
+                      'Next >>',
+                    style: TextStyle(
+                        fontSize: 18,
+                        color: KColors.kThemeGreen,
+                        ),
                     ),
-                    minimumSize: Size(size.width / 4.0,40),
                   ),
-                  child: const Icon(
-                    Icons.arrow_forward,
-                    size: 30,
-                  ),
-                ),
+                ],
               )
             ],
           ),
@@ -91,12 +84,4 @@ class OnboardingPage extends StatelessWidget {
     );
   }
 
-  Container slideBar(BuildContext context, Color color) {
-    return Container(
-      height: 4,
-      width: MediaQuery.of(context).size.width / 4.7,
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(10), color: color),
-    );
-  }
 }

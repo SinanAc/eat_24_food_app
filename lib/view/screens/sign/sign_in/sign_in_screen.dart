@@ -24,7 +24,7 @@ class SignInScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height/7.0),
+                SizedBox(height: MediaQuery.of(context).size.height/8.5),
                 const SingleColorTitle(
                   text: 'Sign in to',
                   color: KColors.kWhiteColor,
