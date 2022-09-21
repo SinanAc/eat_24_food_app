@@ -22,6 +22,7 @@ class MainTitle extends StatelessWidget {
         color: color,
         fontWeight: weight,
       ),
+      textAlign: TextAlign.center,
     );
   }
 }

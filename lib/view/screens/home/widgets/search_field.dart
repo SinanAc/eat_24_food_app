@@ -12,28 +12,23 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal:13.0),
-      child: SizedBox(
-        height: size.height * 0.08,
-        child: TextFormField(
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(
-            ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.0),
+      child: TextField(
+        decoration: InputDecoration(
+            border: OutlineInputBorder(),
             fillColor: Color.fromARGB(55, 255, 255, 255),
             filled: true,
-            hintText: 'Type Something..',
-            hintStyle:
-                TextStyle(color: Color.fromARGB(138, 255, 255, 255)),
+            hintText: 'Type Something...',
+            hintStyle: TextStyle(color: Color.fromARGB(138, 255, 255, 255)),
             prefixIcon: Icon(
               CupertinoIcons.search,
               color: Color.fromARGB(138, 255, 255, 255),
             ),
-          ),
-          style: const TextStyle(
-            fontFamily: 'SubMainFont',
-            color: KColors.kWhiteColor,
-          ),
+            contentPadding: EdgeInsets.all(7)),
+        style: TextStyle(
+          fontFamily: 'SubMainFont',
+          color: KColors.kWhiteColor,
         ),
       ),
     );

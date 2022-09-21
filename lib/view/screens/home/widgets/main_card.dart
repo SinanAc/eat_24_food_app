@@ -4,8 +4,13 @@ import 'package:eat24/view/widgets/main_title.dart';
 import 'package:flutter/material.dart';
 
 class MainCard extends StatelessWidget {
-  final Color color;
-  const MainCard({Key? key, required this.color}) : super(key: key);
+  const MainCard({
+    Key? key,
+    required this.text,
+    required this.img,
+  }) : super(key: key);
+  final String text;
+  final String img;
 
   @override
   Widget build(BuildContext context) {
@@ -14,57 +19,45 @@ class MainCard extends StatelessWidget {
       backgroundColor: Colors.transparent,
       body: Center(
         child: Container(
-          width: size.width * 0.9,
+          width: size.width * 0.92,
           decoration: BoxDecoration(
-              color: color, borderRadius: BorderRadius.circular(15)),
+            color: Colors.black,
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+              colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5),
+                BlendMode.dstATop,
+              ),
+              image: AssetImage(img),
+              fit: BoxFit.fill,
+            ),
+          ),
           child: Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Row(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const MainTitle(
-                      text: 'Latest',
-                      fontSize: 22,
-                      weight: FontWeight.bold,
-                    ),
-                    const MainTitle(
-                      text: 'Arrival',
-                      fontSize: 28,
-                      color: KColors.kThemeGreen,
-                      weight: FontWeight.bold,
-                    ),
-                    SizedBox(
-                      width: size.width * 0.45,
-                      child: const Text(
-                        'Before you go to dfugd ewruy gfiu fiuwryufrufy rgfyriu r 8ruy',
-                        style: TextStyle(
-                          fontFamily: 'SubMainFont',
-                        ),
-                      ),
-                    ),
-                    KSizedBox.kWidth_5,
-                    Container(
-                      decoration: BoxDecoration(
-                          color: KColors.kThemeYellow,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          'Order Now',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    )
-                  ],
+                MainTitle(
+                  text: text,
+                  fontSize: 30,
+                  weight: FontWeight.bold,
+                  color: KColors.kThemeYellow,
                 ),
-                SizedBox(
-                  height: 120,
-                  width: 120,
-                  child: Image.asset('assets/images/main_card_img_1.png'),
-                )
+                KSizedBox.kHeigh_5,
+                Container(
+                  decoration: BoxDecoration(
+                      color: KColors.kThemeGreen,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0,horizontal: 14.0),
+                    child: Text(
+                      'Order Now',
+                      style: TextStyle(
+                          color: Colors.white, fontFamily: 'SubMainFont'),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
