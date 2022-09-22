@@ -8,6 +8,7 @@ import 'package:eat24/view/widgets/button_widget.dart';
 import 'package:eat24/view/widgets/password_textfield_widget.dart';
 import 'package:eat24/view/widgets/single_color_title.dart';
 import 'package:eat24/view/widgets/text_field_widget.dart';
+import 'package:eat24/view_model/signin_view_model.dart';
 import 'package:eat24/view_model/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -67,6 +68,8 @@ class SignupScreen extends StatelessWidget {
                             icon: Icons.visibility,
                             controller: signupController.passwordController,
                             validator: signupController.passwordValidator,
+                            signPro: Provider.of<SignupViewModel>(context,
+                                listen: false),
                           ),
                           KSizedBox.kHeigh_20,
                           PasswordTextFieldWidget(
@@ -76,6 +79,8 @@ class SignupScreen extends StatelessWidget {
                                 signupController.confirmPasswordController,
                             validator:
                                 signupController.confirmPasswordValidator,
+                            signPro: Provider.of<SignupViewModel>(context,
+                                listen: false),
                           ),
                           KSizedBox.kHeigh_20,
                           ButtonWidget(
@@ -99,8 +104,8 @@ class SignupScreen extends StatelessWidget {
                     text: "Already have an account?",
                     buttonText: 'Sign in',
                     onTap: () {
-                      signupController.disposes();
                       PushFunctions.pop(context);
+                      signupController.disposes();
                     },
                   )
                 ],

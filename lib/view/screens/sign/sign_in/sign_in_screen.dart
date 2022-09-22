@@ -62,6 +62,7 @@ class SignInScreen extends StatelessWidget {
                             icon: Icons.visibility,
                             controller: signinController.passwordController,
                             validator: signinController.passwordValidator,
+                            signPro: Provider.of<SigninViewModel>(context, listen: false),
                           ),
                           KSizedBox.kHeigh_30,
                           ButtonWidget(
@@ -90,9 +91,9 @@ class SignInScreen extends StatelessWidget {
       floatingActionButton: TextButtonWidget(
         text: "Don't have an account?",
         buttonText: 'Sign up',
-        onTap: () {
-          signinController.disposes();          
+        onTap: () {       
           PushFunctions.push(context, const SignupScreen());
+          signinController.disposes();   
         },
       ),
       resizeToAvoidBottomInset: false

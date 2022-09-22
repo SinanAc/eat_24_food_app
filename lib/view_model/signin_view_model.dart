@@ -9,7 +9,7 @@ class SigninViewModel extends ChangeNotifier {
   bool isLoading = false;
 
   // make text obscure for passwords
-  bool _isObscure = false;
+  bool _isObscure = true;
   get isObscure => _isObscure;
   set isObscure(value) {
     _isObscure = value;
@@ -52,7 +52,8 @@ class SigninViewModel extends ChangeNotifier {
     signInKey.currentState!.reset();
     emailController.clear();
     passwordController.clear();
-    //_isObscure = false;
+    _isObscure = true;
     isLoading = false;
+    notifyListeners();
   }
 }

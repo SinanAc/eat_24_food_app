@@ -13,6 +13,13 @@ class SignupViewModel extends ChangeNotifier {
   final confirmPasswordController = TextEditingController();
   var isLoading = false;
 
+  // make text obscure for passwords
+  bool _isObscure = true;
+  get isObscure => _isObscure;
+  set isObscure(value) {
+    _isObscure = value;
+    notifyListeners();
+  }  
   final dio = Dio(
     BaseOptions(
       baseUrl: Url.baseUrl,
@@ -95,6 +102,8 @@ class SignupViewModel extends ChangeNotifier {
     emailController.clear();
     passwordController.clear();
     confirmPasswordController.clear();
+    _isObscure = true;
     isLoading = false;
+    notifyListeners();
   }
 }

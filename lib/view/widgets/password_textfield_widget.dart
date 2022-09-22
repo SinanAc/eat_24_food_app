@@ -1,24 +1,25 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:eat24/utils/colors.dart';
-import 'package:eat24/view_model/signin_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class PasswordTextFieldWidget extends StatelessWidget {
   final String hintText;
   final IconData icon;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final signPro;
   const PasswordTextFieldWidget({
     Key? key,
     required this.hintText,
     required this.icon,
     required this.validator,
     required this.controller,
+    required this.signPro,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final signPro = Provider.of<SigninViewModel>(context, listen: false);
     return TextFormField(
       controller: controller,
       validator: validator,
