@@ -1,5 +1,7 @@
 import 'package:eat24/view/screens/splash/splash_screen.dart';
 import 'package:eat24/view_model/main_page_view_model.dart';
+import 'package:eat24/view_model/signin_view_model.dart';
+import 'package:eat24/view_model/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> MainPageViewModel())
+        ChangeNotifierProvider(create: (context)=> MainPageViewModel()),
+        ChangeNotifierProvider(create: (context)=> SigninViewModel()),
+        ChangeNotifierProvider(create: (context)=> SignupViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

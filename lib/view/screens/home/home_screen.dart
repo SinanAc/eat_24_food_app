@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:eat24/utils/colors.dart';
 import 'package:eat24/utils/sizes.dart';
 import 'package:eat24/view/screens/home/widgets/category_card.dart';

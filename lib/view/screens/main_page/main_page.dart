@@ -8,14 +8,14 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mainPageProvider = Provider.of<MainPageViewModel>(context);
+    final mainPageController = Provider.of<MainPageViewModel>(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(240, 232, 232, 232),
-      body: MainPageViewModel.screenList[mainPageProvider.bottomNavIndex],
+      body: MainPageViewModel.screenList[mainPageController.bottomNavIndex],
       bottomNavigationBar: BottomNavyBar(
-        selectedIndex: mainPageProvider.bottomNavIndex,
+        selectedIndex: mainPageController.bottomNavIndex,
         onItemSelected: (index) {
-            mainPageProvider.bottomNavIndex = index;        },
+            mainPageController.bottomNavIndex = index;        },
         items: [
           MainPageViewModel.bottomItems[0],
           MainPageViewModel.bottomItems[1],
