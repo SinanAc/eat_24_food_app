@@ -8,7 +8,6 @@ import 'package:eat24/view/widgets/button_widget.dart';
 import 'package:eat24/view/widgets/password_textfield_widget.dart';
 import 'package:eat24/view/widgets/single_color_title.dart';
 import 'package:eat24/view/widgets/text_field_widget.dart';
-import 'package:eat24/view_model/signin_view_model.dart';
 import 'package:eat24/view_model/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +17,7 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final signupController = Provider.of<SignupViewModel>(context);
+    final signupController = Provider.of<SignUpViewModel>(context);
     return Scaffold(
       backgroundColor: KColors.kThemeGreen,
       body: SafeArea(
@@ -27,6 +26,7 @@ class SignupScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Form(
               key: signupController.signUpKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -41,57 +41,64 @@ class SignupScreen extends StatelessWidget {
                     color: KColors.kThemeYellow,
                   ),
                   KSizedBox.kHeigh_15,
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
-                      color: KColors.kWhiteColor,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 15, top: 30, bottom: 20),
-                      child: Column(
-                        children: [
-                          TextFieldWidget(
-                            hintText: 'Name',
-                            controller: signupController.nameController,
-                            validator: signupController.nameValidator,
-                          ),
-                          KSizedBox.kHeigh_20,
-                          TextFieldWidget(
-                            hintText: 'Email ID',
-                            controller: signupController.emailController,
-                            validator: signupController.emailValidator,
-                          ),
-                          KSizedBox.kHeigh_20,
-                          PasswordTextFieldWidget(
-                            hintText: 'Password',
-                            icon: Icons.visibility,
-                            controller: signupController.passwordController,
-                            validator: signupController.passwordValidator,
-                            signPro: Provider.of<SignupViewModel>(context,
-                                listen: false),
-                          ),
-                          KSizedBox.kHeigh_20,
-                          PasswordTextFieldWidget(
-                            hintText: 'Confirm Password',
-                            icon: Icons.visibility,
-                            controller:
-                                signupController.confirmPasswordController,
-                            validator:
-                                signupController.confirmPasswordValidator,
-                            signPro: Provider.of<SignupViewModel>(context,
-                                listen: false),
-                          ),
-                          KSizedBox.kHeigh_20,
-                          ButtonWidget(
-                            text: 'Sign up',
-                            onTap: () {
-                              signupController.signUpKey.currentState!
-                                  .validate();
-                              //PushFunctions.push(context, const MainPage());
-                            },
-                          ),
-                        ],
+                  Consumer<SignUpViewModel>(
+                    builder: (context, value, child) => Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: KColors.kWhiteColor,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15, right: 15, top: 30, bottom: 20),
+                        child: Column(
+                          children: [
+                            TextFieldWidget(
+                              hintText: 'Name',
+                              controller: signupController.nameController,
+                              validator: signupController.nameValidator,
+                            ),
+                            KSizedBox.kHeigh_20,
+                            TextFieldWidget(
+                              hintText: 'Email ID',
+                              controller: signupController.emailController,
+                              validator: signupController.emailValidator,
+                            ),
+                            KSizedBox.kHeigh_20,
+                            PasswordTextFieldWidget(
+                              hintText: 'Password',
+                              icon: Icons.visibility,
+                              controller: signupController.passwordController,
+                              validator: signupController.passwordValidator,
+                              signPro: Provider.of<SignUpViewModel>(context,
+                                  listen: false),
+                            ),
+                            KSizedBox.kHeigh_20,
+                            PasswordTextFieldWidget(
+                              hintText: 'Confirm Password',
+                              icon: Icons.visibility,
+                              controller:
+                                  signupController.confirmPasswordController,
+                              validator:
+                                  signupController.confirmPasswordValidator,
+                              signPro: Provider.of<SignUpViewModel>(context,
+                                  listen: false),
+                            ),
+                            KSizedBox.kHeigh_20,
+                            value.isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                        color: KColors.kThemeYellow))
+                                : ButtonWidget(
+                                    text: 'Sign up',
+                                    onTap: () async {
+                                      signupController.signUpKey.currentState!
+                                          .validate();
+                                      signupController.onSignupButton(context);
+                                      //PushFunctions.push(context, const MainPage());
+                                    },
+                                  ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

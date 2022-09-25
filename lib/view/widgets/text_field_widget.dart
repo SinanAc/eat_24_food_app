@@ -32,7 +32,7 @@ class TextFieldWidget extends StatelessWidget {
       
       keyboardType: keyType,
       style: const TextStyle(
-        fontFamily: 'SubMainFont',
+       // fontFamily: 'SubMainFont',
       ),
     );
   }

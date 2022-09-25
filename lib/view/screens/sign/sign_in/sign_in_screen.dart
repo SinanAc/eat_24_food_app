@@ -7,6 +7,7 @@ import 'package:eat24/view/screens/sign/widgets/signup_with_google.dart';
 import 'package:eat24/view/screens/sign/widgets/text_button.dart';
 import 'package:eat24/view/widgets/button_widget.dart';
 import 'package:eat24/view/widgets/password_textfield_widget.dart';
+import 'package:eat24/view/widgets/show_popup.dart';
 import 'package:eat24/view/widgets/single_color_title.dart';
 import 'package:eat24/view/widgets/text_field_widget.dart';
 import 'package:eat24/view_model/signin_view_model.dart';
@@ -70,6 +71,7 @@ class SignInScreen extends StatelessWidget {
                             onTap: () {
                               signinController.signInKey.currentState!
                                   .validate();
+                               //ScaffoldMessenger.of(context).showSnackBar(ShowDialogs.popUp('Haiiii')) ;  
                               //signinController.onSigninButton();
                             },
                           ),

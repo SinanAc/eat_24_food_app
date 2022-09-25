@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
-import 'package:eat24/utils/url.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class SigninViewModel extends ChangeNotifier {
   final signInKey = GlobalKey<FormState>();
@@ -16,15 +14,14 @@ class SigninViewModel extends ChangeNotifier {
     notifyListeners();
   }  
 
-  final dio = Dio(
-    BaseOptions(
-      baseUrl: Url.baseUrl,
-    ),
-  );
-
   onSigninButton() async {
     isLoading = true;
-    if (signInKey.currentState!.validate()) {}
+    if (signInKey.currentState!.validate()) {
+      // final email = emailController.text.trim();
+      // final password = passwordController.text.trim();
+      //final data  = SignInModel(email: email, password: password);
+
+    }
   }
 
   String? emailValidator(String? fieldContent) {

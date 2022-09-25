@@ -1,17 +1,19 @@
-// ignore_for_file: unused_element
-
-import 'package:dio/dio.dart';
-import 'package:eat24/model/signup_model.dart';
-import 'package:eat24/utils/url.dart';
+import 'dart:developer';
+import 'package:eat24/model/sign_up/signup_model.dart';
+import 'package:eat24/model/sign_up/signup_response_model.dart';
+import 'package:eat24/repo/signup_repo.dart';
+import 'package:eat24/utils/push_functions.dart';
+import 'package:eat24/view/screens/main_page/main_page.dart';
+import 'package:eat24/view/widgets/show_popup.dart';
 import 'package:flutter/material.dart';
 
-class SignupViewModel extends ChangeNotifier {
+class SignUpViewModel extends ChangeNotifier {
   final signUpKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
-  var isLoading = false;
+  bool isLoading = false;
 
   // make text obscure for passwords
   bool _isObscure = true;
@@ -19,38 +21,50 @@ class SignupViewModel extends ChangeNotifier {
   set isObscure(value) {
     _isObscure = value;
     notifyListeners();
-  }  
-  final dio = Dio(
-    BaseOptions(
-      baseUrl: Url.baseUrl,
-    ),
-  );
+  }
 
-  onSignupButton() async {
-    isLoading = true;
+  // signup method
+  void onSignupButton(context) async {
     if (signUpKey.currentState!.validate()) {
-      final obj = SignupModel(
-        name: nameController.text.trim(),
-        email: emailController.text.trim(),
-        password: passwordController.text.trim(),
-        confirmPassword: confirmPasswordController.text.trim(),
-        message: '',
-      );
+      isLoading = true;
+      notifyListeners();
+      final obj = SignUpModel(
+          name: nameController.text,
+          email: emailController.text,
+          password: passwordController.text,
+          confirmPassword: confirmPasswordController.text,
+          role: "ROLE_USER"
+          // message: '',
+          );
+      SignUpResponse? signUpResponse = await SignupApiService().signUpRepo(obj);
+      //id = signUpResponse!.id;
+      if (signUpResponse?.status == "true") {
+        log("=====success======");
+        PushFunctions.push(context, const MainPage());
+        _isLoadingFalse();
+        log("=========== ${signUpResponse?.status} ===========");
+      } else if (signUpResponse == null) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('No Response'));
+        _isLoadingFalse();
+        return;
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp('Error !!!'));
+        _isLoadingFalse();
+      }
     }
   }
 
   String? nameValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      isLoading = false;
       return 'Enter Name';
     }
-
     return null;
   }
 
   String? emailValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      isLoading = false;
       return 'Enter Email';
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -62,8 +76,10 @@ class SignupViewModel extends ChangeNotifier {
 
   String? passwordValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      isLoading = false;
       return 'Enter Password';
+    }
+    if(fieldContent.length<6){
+      return 'Requires atleast 6 characters';
     }
 
     return null;
@@ -71,30 +87,17 @@ class SignupViewModel extends ChangeNotifier {
 
   String? confirmPasswordValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      isLoading = false;
       return 'Confirm Password';
     }
     if (fieldContent != passwordController.text) {
-      isLoading = false;
       return 'Password Not Match';
     }
     return null;
   }
 
-  //     final response = await ApiSignUp().registerUser(obj);
-  //     isLoading.value = false;
-  //     if(response != null){
-  //         if(response.email != null){
-  //           log(response.toJson().toString());
-  //           Get.toNamed(Paths.otp,arguments: response.phone.toString());
-  //         }else{
-  //           ErrorDialoge.showSnakBar(response.message.toString());
-  //         }
-  //     }else{
-  //        ErrorDialoge.showSnakBar("No network");
-  //     }
-  //   }
-  // }
+  void _isLoadingFalse() {
+    notifyListeners();
+  }
 
   void disposes() {
     signUpKey.currentState!.reset();
