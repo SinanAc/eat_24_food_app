@@ -33,9 +33,7 @@ class PasswordTextFieldWidget extends StatelessWidget {
         hintStyle: const TextStyle(color: KColors.kGreyColor),
         suffixIcon: IconButton(
           onPressed: () {
-            signPro.isObscure == false
-                ? signPro.isObscure = true
-                : signPro.isObscure = false;
+            signPro.isObscure = !signPro.isObscure;
           },
           icon:
               Icon(signPro.isObscure ? Icons.visibility_off : Icons.visibility),

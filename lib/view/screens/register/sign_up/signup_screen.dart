@@ -1,10 +1,11 @@
 import 'package:eat24/utils/colors.dart';
 import 'package:eat24/utils/push_functions.dart';
 import 'package:eat24/utils/sizes.dart';
-import 'package:eat24/view/screens/sign/widgets/or_widget.dart';
-import 'package:eat24/view/screens/sign/widgets/signup_with_google.dart';
-import 'package:eat24/view/screens/sign/widgets/text_button.dart';
+import 'package:eat24/view/screens/register/widgets/or_widget.dart';
+import 'package:eat24/view/screens/register/widgets/signup_with_google.dart';
+import 'package:eat24/view/screens/register/widgets/text_button.dart';
 import 'package:eat24/view/widgets/button_widget.dart';
+import 'package:eat24/view/widgets/loading_indicator.dart';
 import 'package:eat24/view/widgets/password_textfield_widget.dart';
 import 'package:eat24/view/widgets/single_color_title.dart';
 import 'package:eat24/view/widgets/text_field_widget.dart';
@@ -85,16 +86,13 @@ class SignupScreen extends StatelessWidget {
                             ),
                             KSizedBox.kHeigh_20,
                             value.isLoading
-                                ? const Center(
-                                    child: CircularProgressIndicator(
-                                        color: KColors.kThemeYellow))
+                                ? const LoadingIndicator()
                                 : ButtonWidget(
                                     text: 'Sign up',
-                                    onTap: () async {
+                                    onTap: () {
                                       signupController.signUpKey.currentState!
                                           .validate();
                                       signupController.onSignupButton(context);
-                                      //PushFunctions.push(context, const MainPage());
                                     },
                                   ),
                           ],

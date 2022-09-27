@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 class TextButtonWidget extends StatelessWidget {
   final String text;
   final String buttonText;
+  final Color color;
   final Function onTap;
   const TextButtonWidget({
     Key? key,
-    required this.text,
+    this.text = '',
+    this.color = KColors.kThemeYellow,
     required this.buttonText,
     required this.onTap,
   }) : super(key: key);
@@ -29,8 +31,8 @@ class TextButtonWidget extends StatelessWidget {
           },
           child: Text(
             buttonText,
-            style: const TextStyle(
-              color: KColors.kThemeYellow,
+            style:  TextStyle(
+              color: color,
               decoration: TextDecoration.underline,
             ),
           ),

@@ -1,7 +1,6 @@
-import 'dart:developer';
 import 'package:eat24/model/sign_up/signup_model.dart';
 import 'package:eat24/model/sign_up/signup_response_model.dart';
-import 'package:eat24/repo/signup_repo.dart';
+import 'package:eat24/services/signup_service.dart';
 import 'package:eat24/utils/push_functions.dart';
 import 'package:eat24/view/screens/main_page/main_page.dart';
 import 'package:eat24/view/widgets/show_popup.dart';
@@ -33,24 +32,25 @@ class SignUpViewModel extends ChangeNotifier {
           email: emailController.text,
           password: passwordController.text,
           confirmPassword: confirmPasswordController.text,
-          role: "ROLE_USER"
-          // message: '',
-          );
-      SignUpResponse? signUpResponse = await SignupApiService().signUpRepo(obj);
-      //id = signUpResponse!.id;
-      if (signUpResponse?.status == "true") {
-        log("=====success======");
-        PushFunctions.push(context, const MainPage());
-        _isLoadingFalse();
-        log("=========== ${signUpResponse?.status} ===========");
-      } else if (signUpResponse == null) {
+          role: "ROLE_USER");
+      SignUpResponseModel? signUpResponse =
+          await SignUpService().signUpRepo(obj);
+      if (signUpResponse == null) {
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp('No Response'));
         _isLoadingFalse();
         return;
+      } else if (signUpResponse.message == "true") {
+        PushFunctions.push(context, const MainPage());
+        _isLoadingFalse();
+      } else if (signUpResponse.message != "true") {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(ShowDialogs.popUp("${signUpResponse.message}"));
+        _isLoadingFalse();
+        return;
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(ShowDialogs.popUp('Error !!!'));
+            .showSnackBar(ShowDialogs.popUp('Something went wrong !!!'));
         _isLoadingFalse();
       }
     }
@@ -58,14 +58,14 @@ class SignUpViewModel extends ChangeNotifier {
 
   String? nameValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      return 'Enter Name';
+      return 'Please enter your name';
     }
     return null;
   }
 
   String? emailValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      return 'Enter Email';
+      return 'Please enter your email';
     } else if (!RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(fieldContent)) {
@@ -76,12 +76,11 @@ class SignUpViewModel extends ChangeNotifier {
 
   String? passwordValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
-      return 'Enter Password';
+      return 'Please enter your password';
     }
-    if(fieldContent.length<6){
+    if (fieldContent.length < 6) {
       return 'Requires atleast 6 characters';
     }
-
     return null;
   }
 
@@ -96,6 +95,7 @@ class SignUpViewModel extends ChangeNotifier {
   }
 
   void _isLoadingFalse() {
+    isLoading = false;
     notifyListeners();
   }
 

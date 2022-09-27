@@ -1,14 +1,14 @@
-class SignUpResponse {
-   String? status;
+class SignUpResponseModel {
+   String? message;
    String? id;
 
-  SignUpResponse({
-    this.status,
+  SignUpResponseModel({
+    this.message,
     this.id,
   });
 
-  factory SignUpResponse.fromJson(Map<String, dynamic> json) => SignUpResponse(
-        status: json["message"] ?? "",
+  factory SignUpResponseModel.fromJson(Map<String, dynamic> json) => SignUpResponseModel(
+        message: json["message"] ?? "",
         id: json["userId"] ?? "",
       );
 }
