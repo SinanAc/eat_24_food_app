@@ -2,7 +2,7 @@ import 'package:eat24/utils/colors.dart';
 import 'package:eat24/utils/push_functions.dart';
 import 'package:eat24/utils/sizes.dart';
 import 'package:eat24/utils/strings.dart';
-import 'package:eat24/view/screens/sign/sign_in/sign_in_screen.dart';
+import 'package:eat24/view/screens/register/sign_in/sign_in_screen.dart';
 import 'package:eat24/view/widgets/button_widget.dart';
 import 'package:flutter/material.dart';
 

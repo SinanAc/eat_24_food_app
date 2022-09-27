@@ -14,4 +14,8 @@ class PushFunctions {
     Navigator.of(context)
         .pushReplacement(MaterialPageRoute(builder: (context) => page));
   }
+
+  static pop(context){
+    Navigator.of(context).pop();
+  }
 }

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:eat24/utils/colors.dart';
 import 'package:eat24/utils/push_functions.dart';
-import 'package:eat24/view/screens/main_page/main_page.dart';
+import 'package:eat24/view/screens/onboarding/onboard_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Timer(const Duration(seconds: 2), () {
-        PushFunctions.pushReplace(context, const MainPage());
+        PushFunctions.pushReplace(context, const OnboardingScreen());
       });
     });
     return Scaffold(
