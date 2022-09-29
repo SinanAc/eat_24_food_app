@@ -9,6 +9,6 @@ class SignUpResponseModel {
 
   factory SignUpResponseModel.fromJson(Map<String, dynamic> json) => SignUpResponseModel(
         message: json["message"] ?? "",
-        id: json["userId"] ?? "",
+        id: json["userId"] ?? ""
       );
 }

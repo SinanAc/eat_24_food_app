@@ -6,12 +6,14 @@ class DoubleColorTitle extends StatelessWidget {
   final String text2;
   final Color firstColor;
   final double gap;
+  final double textSize;
   const DoubleColorTitle({
     Key? key,
     required this.text1,
     required this.text2,
     this.firstColor = KColors.kThemeGreen,
     this.gap = 3,
+    this.textSize = 20,
   }) : super(key: key);
 
   @override
@@ -22,7 +24,7 @@ class DoubleColorTitle extends StatelessWidget {
           text1,
           style:  TextStyle(
             color: firstColor,
-            fontSize: 20,
+            fontSize: textSize,
             fontWeight: FontWeight.bold,
             fontFamily: 'SubMainFont',
             letterSpacing: 1,
@@ -33,9 +35,9 @@ class DoubleColorTitle extends StatelessWidget {
         ),
         Text(
           text2,
-          style: const TextStyle(
+          style:  TextStyle(
             color: KColors.kThemeYellow,
-            fontSize: 20,
+            fontSize: textSize,
             fontWeight: FontWeight.bold,
             fontFamily: 'SubMainFont',
             letterSpacing: 1,

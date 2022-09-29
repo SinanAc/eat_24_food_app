@@ -44,10 +44,8 @@ class SigninViewModel extends ChangeNotifier {
         _isLoadingFalse();
         return;
       } else if (signInResponse.message == "true") {
-        //log("=====success======");
         PushFunctions.push(context, const MainPage());
         _isLoadingFalse();
-        // log("=========== ${signInResponse.message} ===========");
       } else if (signInResponse.message != "true") {
         ScaffoldMessenger.of(context)
             .showSnackBar(ShowDialogs.popUp(signInResponse.message));

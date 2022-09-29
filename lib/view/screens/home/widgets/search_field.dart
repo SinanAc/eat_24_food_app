@@ -1,4 +1,3 @@
-import 'package:eat24/utils/colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -12,24 +11,30 @@ class SearchField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
-      child: TextField(
-        decoration: InputDecoration(
-            border: OutlineInputBorder(),
-            fillColor: Color.fromARGB(55, 255, 255, 255),
-            filled: true,
-            hintText: 'Type Something...',
-            hintStyle: TextStyle(color: Color.fromARGB(138, 255, 255, 255)),
-            prefixIcon: Icon(
-              CupertinoIcons.search,
-              color: Color.fromARGB(138, 255, 255, 255),
-            ),
-            contentPadding: EdgeInsets.all(7)),
-        style: TextStyle(
-          fontFamily: 'SubMainFont',
-          color: KColors.kWhiteColor,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+      child: CupertinoSearchTextField(
+        padding: const EdgeInsets.symmetric(vertical: 13.0,horizontal: 20),
+        backgroundColor: Colors.grey.withOpacity(0.25),
+        prefixIcon: const Padding(
+          padding:  EdgeInsets.only(left: 10),
+          child:  Icon(
+            CupertinoIcons.search,
+            color: Colors.white38,
+          ),
         ),
+        suffixIcon: const Icon(
+          CupertinoIcons.xmark_circle_fill,
+          color: Colors.white54,
+        ),
+        style: const TextStyle(
+          color: Colors.white38,
+        ),
+        onChanged: (value) {
+          if (value.isEmpty) {
+            return;
+          }
+        },
       ),
     );
   }

@@ -7,27 +7,24 @@ import 'package:eat24/utils/url.dart';
 
 class SignInService {
   Future<SignInResponseModel?> signInRepo(SignInModel data) async {
-    final bool isInternetAvailable = await internetCheck();
-    if (isInternetAvailable) {
+    if (await internetCheck()) {
       try {
         final response =
             await DioService.postMethod(url: Url.login, value: data.toJson());
         if (response.statusCode >= 200 || response.statusCode <= 299) {
-          //log('=======success =========');
           return SignInResponseModel.fromJson(response.data);
         } else {
           return SignInResponseModel.fromJson(response.data);
         }
       } on DioError catch (e) {
         if (e.response!.statusCode == 401) {
-          return SignInResponseModel(
-              message: "Email and password doesn't match !!");
+          return SignInResponseModel(message: "Email and password doesn't match !!");
+        }else{
+          return SignInResponseModel.fromJson(e.response!.data);
         }
-        //log("=========== Dio Error ===========");
       } catch (e) {
-        //log("===========  SignUp error message: $e ===========");
+        return SignInResponseModel(message: e.toString());
       }
-      return null;
     } else {
       return SignInResponseModel(message: "No Internet !!");
     }

@@ -11,8 +11,7 @@ class SignUpService {
       try {
         final response =
             await DioService.postMethod(url: Url.signup, value: data.toJson());
-        if (response.statusCode >= 200 || response.statusCode <= 299) {
-          //log('=======success =========');
+        if (response.statusCode >= 200 && response.statusCode <= 299) {
           return SignUpResponseModel.fromJson(response.data);
         }else {
           return SignUpResponseModel.fromJson(response.data);
@@ -20,13 +19,12 @@ class SignUpService {
       } on DioError catch (e) {
         if (e.response!.statusCode == 422) {
           return SignUpResponseModel(message: "Email address already exists !!");
+        }else{
+          return SignUpResponseModel.fromJson(e.response!.data);
         }
-        //log("=========== Dio Error ===========");
       } catch (e) {
-        return SignUpResponseModel(message: "Something went wrong !!");
-        //log("===========  SignUp error message: $e ===========");
+        return SignUpResponseModel(message: e.toString());
       }
-      return null;
     } else {
       return SignUpResponseModel(message: "No Internet !!");
     }

@@ -25,7 +25,7 @@ class MainCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             image: DecorationImage(
               colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.5),
+                Colors.black.withOpacity(0.7),
                 BlendMode.dstATop,
               ),
               image: AssetImage(img),

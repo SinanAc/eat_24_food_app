@@ -10,4 +10,5 @@ class KColors {
   static const Color kBlackColor = Colors.black;
   static const Color kGreyColor = Color.fromARGB(255, 200, 197, 197);
   static const Color kThemeBackground = Color(0xffE8E8E8);
+  static const Color kTabBarColor = Color(0xffD9D9D9);
 }

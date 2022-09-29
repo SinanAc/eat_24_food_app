@@ -89,9 +89,7 @@ class SignupScreen extends StatelessWidget {
                                 ? const LoadingIndicator()
                                 : ButtonWidget(
                                     text: 'Sign up',
-                                    onTap: () {
-                                      signupController.signUpKey.currentState!
-                                          .validate();
+                                    onTap: () {                                    
                                       signupController.onSignupButton(context);
                                     },
                                   ),

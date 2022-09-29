@@ -7,11 +7,13 @@ class MainTitle extends StatelessWidget {
     required this.fontSize,
     this.color = Colors.black,
     this.weight = FontWeight.w100,
+    this.textAlign = TextAlign.center,
   }) : super(key: key);
   final String text;
   final Color color;
   final double fontSize;
   final FontWeight  weight;
+  final TextAlign textAlign;
   @override
   Widget build(BuildContext context) {
     return  Text(
@@ -22,7 +24,7 @@ class MainTitle extends StatelessWidget {
         color: color,
         fontWeight: weight,
       ),
-      textAlign: TextAlign.center,
+      textAlign: textAlign,
     );
   }
 }
