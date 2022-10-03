@@ -24,7 +24,7 @@ class MainPageViewModel extends ChangeNotifier{
   static List<BottomNavyBarItem> bottomItems = [
     BottomNavyBarItem(
         icon: const Icon(Icons.home),
-        title: const Text('Homee'),
+        title: const Text('Home'),
         activeColor: KColors.kThemeGreen,
         inactiveColor: Colors.grey,
         textAlign: TextAlign.center),

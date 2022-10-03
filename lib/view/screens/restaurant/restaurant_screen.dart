@@ -47,7 +47,9 @@ class RestaurantScreen extends StatelessWidget {
                       shrinkWrap: true,
                       itemCount: 10,
                       itemBuilder: ((context, index) {
-                        return const ResFoodItem();
+                        return ResFoodItem(
+                         index: index,
+                        );
                       }),
                     )
                   ],

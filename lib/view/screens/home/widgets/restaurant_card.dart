@@ -8,7 +8,7 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: (){
         PushFunctions.push(context, const RestaurantScreen());
       },

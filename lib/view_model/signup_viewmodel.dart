@@ -59,6 +59,8 @@ class SignUpViewModel extends ChangeNotifier {
   String? nameValidator(String? fieldContent) {
     if (fieldContent!.isEmpty) {
       return 'Please enter your name';
+    }else if(fieldContent.length<4 || fieldContent.length>15){
+      return 'Name reqiures 4-15 characters';
     }
     return null;
   }

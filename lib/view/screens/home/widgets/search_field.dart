@@ -12,7 +12,7 @@ class SearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 13.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: CupertinoSearchTextField(
         padding: const EdgeInsets.symmetric(vertical: 13.0,horizontal: 20),
         backgroundColor: Colors.grey.withOpacity(0.25),

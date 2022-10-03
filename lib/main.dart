@@ -1,5 +1,7 @@
 import 'package:eat24/view/screens/splash/splash_screen.dart';
+import 'package:eat24/view_model/food_item_view_model.dart';
 import 'package:eat24/view_model/main_page_view_model.dart';
+import 'package:eat24/view_model/restaurant_view_model.dart';
 import 'package:eat24/view_model/signin_view_model.dart';
 import 'package:eat24/view_model/signup_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context)=> MainPageViewModel()),
         ChangeNotifierProvider(create: (context)=> SigninViewModel()),
         ChangeNotifierProvider(create: (context)=> SignUpViewModel()),
+        ChangeNotifierProvider(create: (context)=> FoodItemViewModel()),
+        ChangeNotifierProvider(create: (context)=> RestaurantViewModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

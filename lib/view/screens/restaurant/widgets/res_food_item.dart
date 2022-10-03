@@ -8,23 +8,24 @@ import 'package:flutter/material.dart';
 class ResFoodItem extends StatelessWidget {
   const ResFoodItem({
     Key? key,
+    required this.index,
   }) : super(key: key);
-
+  final int index;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        PushFunctions.push(context, FoodItemScreen());
-      },
-      child: Card(
-        elevation: 0,
+        onTap: () {
+          PushFunctions.push(context, FoodItemScreen());
+        },
+        child: Card(
+          elevation: 0,
           color: KColors.kWhiteColor,
-          margin: const EdgeInsets.only(left: 10,right:10,bottom: 10),
+          margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical:12.0,horizontal:16),
+            padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16),
             child: Row(
               children: [
-                 const CircleAvatar(
+                const CircleAvatar(
                   radius: 40,
                   backgroundImage: AssetImage('assets/images/onboard-1.png'),
                   backgroundColor: Colors.transparent,
@@ -42,18 +43,9 @@ class ResFoodItem extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-                Container(
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                          width: 2, color: KColors.kSliderColor)),
-                  padding: const EdgeInsets.all(4.0),
-                  child: const Icon(Icons.add,
-                      color: KColors.kSliderColor),
-                )
               ],
             ),
-          )),
-    );
+          ),
+        ));
   }
 }

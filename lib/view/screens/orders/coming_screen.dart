@@ -1,3 +1,4 @@
+import 'package:eat24/view/screens/orders/widgets/order_food_card.dart';
 import 'package:flutter/material.dart';
 
 class ComingScreen extends StatelessWidget {
@@ -5,8 +6,12 @@ class ComingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('ComingScreen'),
+    return  ListView.builder(
+      itemCount: 3,
+      itemBuilder: ((context, index) {
+        return const OrderFoodCard();
+      }),
+      
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:eat24/view/screens/orders/widgets/order_food_card.dart';
 import 'package:flutter/material.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -5,8 +6,12 @@ class HistoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('HistoryScreen'),
+    return ListView.builder(
+      itemCount: 2,
+      itemBuilder: ((context, index) {
+        return const OrderFoodCard();
+      }),
+      
     );
   }
 }

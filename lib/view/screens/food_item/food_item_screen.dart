@@ -3,7 +3,9 @@ import 'package:eat24/utils/sizes.dart';
 import 'package:eat24/view/screens/food_item/widgets/food_title.dart';
 import 'package:eat24/view/widgets/button_widget.dart';
 import 'package:eat24/view/widgets/main_title.dart';
+import 'package:eat24/view_model/food_item_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FoodItemScreen extends StatelessWidget {
   FoodItemScreen({Key? key}) : super(key: key);
@@ -42,11 +44,14 @@ class FoodItemScreen extends StatelessWidget {
                           ],
                         ),
                         const Spacer(),
-                        Icon(
-                          Icons.favorite_border,
-                          size: 32,
-                          color: Colors.grey.shade700,
-                        )
+                        Consumer<FoodItemViewModel>(builder: (context, val, _) {
+                          return IconButton(
+                            icon: val.isFav ? val.favIcon : val.notFavIcon,
+                            onPressed: () {
+                              val.isFav = !val.isFav;
+                            },
+                          );
+                        })
                       ],
                     ),
                     KSizedBox.kHeigh_10,
@@ -60,11 +65,12 @@ class FoodItemScreen extends StatelessWidget {
                       color: Colors.grey.shade600,
                     ),
                     KSizedBox.kHeigh_10,
-                    ButtonWidget(
-                      text: 'Add to cart',
-                      onTap: () {},
-                      color: KColors.kThemeGreen,
-                    )
+                    Consumer<FoodItemViewModel>(builder: (context, val, _) {
+                      return ButtonWidget(
+                          text: 'Add to cart ',
+                          onTap: () {},
+                          color: KColors.kThemeGreen);
+                    },),
                   ],
                 ),
               ),

@@ -23,7 +23,7 @@ class OrderScreen extends StatelessWidget {
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 15,horizontal: 18),
                   child: DoubleColorTitle(
-                      text1: 'My', text2: 'Order', textSize: 24),
+                      text1: 'My', text2: 'Orders', textSize: 24),
                 ),
                 TabBar(
                   unselectedLabelColor: Colors.grey.shade500,

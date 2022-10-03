@@ -13,14 +13,6 @@ class CategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        //     gradient:const LinearGradient(
-        //         colors: [
-        //         KColors.kSliderColor,
-        //         KColors.kWhiteColor,
-        //         ],
-        //         begin: Alignment.topCenter,
-        //         end: Alignment.bottomCenter,
-        // ),
         borderRadius: BorderRadius.circular(14),
         color: Colors.white,
       ),

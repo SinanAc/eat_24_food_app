@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return SingleChildScrollView(
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       child: Stack(
         children: [
           SizedBox(
@@ -30,22 +31,13 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               KSizedBox.kHeigh_15,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.only(left: 4.0),
-                      child: DoubleColorTitle(
-                        text1: 'Eat',
-                        text2: '24',
-                        firstColor: KColors.kWhiteColor,
-                        gap: 0,
-                      ),
-                    ),
-                    const Spacer(),
-                    Image.asset('assets/images/Group 1.png'),
-                  ],
+              const Padding(
+                padding: EdgeInsets.only(left: 19),
+                child: DoubleColorTitle(
+                  text1: 'Eat',
+                  text2: '24',
+                  firstColor: KColors.kWhiteColor,
+                  gap: 0,
                 ),
               ),
               KSizedBox.kHeigh_5,
@@ -79,7 +71,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const Padding(
                 padding: EdgeInsets.only(left: 10, top: 5),
-                child: MainTitle(text: 'Restaurants', fontSize: 16),
+                child: MainTitle(text: 'Nearest Restaurants', fontSize: 16),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10, top: 2),
@@ -156,5 +148,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

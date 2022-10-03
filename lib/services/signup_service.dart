@@ -9,18 +9,19 @@ class SignUpService {
   Future<SignUpResponseModel?> signUpRepo(SignUpModel data) async {
     if (await internetCheck()) {
       try {
-        final response =
+        final Response response =
             await DioService.postMethod(url: Url.signup, value: data.toJson());
-        if (response.statusCode >= 200 && response.statusCode <= 299) {
+        if (response.statusCode == 200 && response.statusCode! <= 299) {
           return SignUpResponseModel.fromJson(response.data);
-        }else {
+        } else {
           return SignUpResponseModel.fromJson(response.data);
         }
       } on DioError catch (e) {
-        if (e.response!.statusCode == 422) {
-          return SignUpResponseModel(message: "Email address already exists !!");
+        if(e.response!.statusCode==422){
+                  return SignUpResponseModel(
+            message: 'Email address already exists !!');
         }else{
-          return SignUpResponseModel.fromJson(e.response!.data);
+          return SignUpResponseModel(message: e.response!.statusMessage.toString());
         }
       } catch (e) {
         return SignUpResponseModel(message: e.toString());
